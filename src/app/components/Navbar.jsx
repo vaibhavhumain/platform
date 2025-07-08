@@ -1,74 +1,72 @@
 'use client'
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import {
-  Home,
-  Users,
-  GalleryVerticalEnd,
-  Truck,
   Sun,
   Moon,
   LogOut,
-} from 'lucide-react';
-import { useRouter } from 'next/navigation';
+} from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 export default function Navbar() {
-  const [theme, setTheme] = useState('light');
-  const [userName, setUserName] = useState('');
-  const router = useRouter();
+  const [theme, setTheme] = useState('light')
+  const [userName, setUserName] = useState('')
+  const router = useRouter()
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const userData = localStorage.getItem('user');
+    const savedTheme = localStorage.getItem('theme')
+    const userData = localStorage.getItem('user')
 
     if (savedTheme === 'dark') {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
+      setTheme('dark')
+      document.documentElement.classList.add('dark')
     } else {
-      setTheme('light');
-      document.documentElement.classList.remove('dark');
+      setTheme('light')
+      document.documentElement.classList.remove('dark')
     }
 
     if (userData) {
-      const user = JSON.parse(userData);
-      if (user?.name) setUserName(user.name);
+      const user = JSON.parse(userData)
+      if (user?.name) setUserName(user.name)
     }
-  }, []);
+  }, [])
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark');
-  };
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
+    document.documentElement.classList.toggle('dark')
+  }
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    router.push('/');
-  };
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    router.push('/')
+  }
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-gray-900/60 shadow-md transition-all">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-gray-900/70 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-all">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-purple-500 text-transparent bg-clip-text">
+          <span className="text-2xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-teal-400">
             GobindCoach
           </span>
         </Link>
 
-        <nav className="flex items-center gap-6 text-sm font-medium">
-          {/* Welcome Message */}
+        {/* Navigation */}
+        <nav className="flex items-center gap-4 text-sm font-medium">
+          {/* Welcome */}
           {userName && (
-            <span className="text-sm text-gray-800 dark:text-gray-200 font-semibold hidden sm:inline">
-              Welcome, {userName}
+            <span className="text-gray-700 dark:text-gray-200 font-medium hidden sm:inline">
+              👋 Welcome, <span className="font-semibold">{userName}</span>
             </span>
           )}
 
-          {/* Dark Mode Toggle */}
+          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="ml-2 flex items-center gap-2 px-3 py-1.5 rounded-full border dark:border-white border-gray-300 bg-white/30 dark:bg-gray-700/40 hover:bg-white/50 dark:hover:bg-gray-600/60 transition-all"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all shadow-sm"
           >
             {theme === 'dark' ? (
               <>
@@ -83,10 +81,10 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Logout Button */}
+          {/* Logout */}
           <button
             onClick={handleLogout}
-            className="ml-2 flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-600 text-white hover:bg-red-700 transition-all"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white transition-all shadow-sm"
           >
             <LogOut size={16} />
             <span className="hidden sm:inline">Logout</span>
@@ -94,17 +92,5 @@ export default function Navbar() {
         </nav>
       </div>
     </header>
-  );
-}
-
-function NavLink({ href, icon, label }) {
-  return (
-    <Link
-      href={href}
-      className="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 transition"
-    >
-      {icon}
-      <span className="hidden sm:inline">{label}</span>
-    </Link>
-  );
+  )
 }
