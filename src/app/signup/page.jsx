@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { API_BASE_URL } from '../utils/constants';
-import { motion } from 'framer-motion';
 
 export default function Signup() {
   const router = useRouter();
@@ -37,13 +36,7 @@ export default function Signup() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.4, ease: 'easeInOut' }}
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-800 via-teal-900 to-black px-6"
-    >
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-800 via-teal-900 to-black px-6">
       <div className="backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl rounded-2xl p-8 w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-white mb-6 tracking-wide">
           Create Your Account 🌱
@@ -98,6 +91,6 @@ export default function Signup() {
           </Link>
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 }

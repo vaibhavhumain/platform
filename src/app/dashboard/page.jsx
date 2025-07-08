@@ -9,7 +9,9 @@ import {
   Truck,
   Globe,
 } from 'lucide-react'
+import { useRouter } from 'next/router'
 
+const router = useRouter();
 const apps = [
   {
     name: "Leads Management",
@@ -36,6 +38,14 @@ const apps = [
     color: "text-red-500 bg-red-100 dark:bg-red-900/20",
   },
 ]
+
+ useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.replace('/login');
+    }
+  }, [router]);
+
 
 export default function DashboardPage() {
   return (
