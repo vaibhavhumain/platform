@@ -1,17 +1,18 @@
 'use client'
+
+import { useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import Navbar from '../components/Navbar'
 import Tilt from 'react-parallax-tilt'
+import Navbar from '../components/Navbar'
 import {
   Users,
   ImageIcon,
   Truck,
   Globe,
 } from 'lucide-react'
-import { useRouter } from 'next/router'
 
-const router = useRouter();
 const apps = [
   {
     name: "Leads Management",
@@ -39,15 +40,16 @@ const apps = [
   },
 ]
 
- useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      router.replace('/login');
-    }
-  }, [router]);
-
-
 export default function DashboardPage() {
+  const router = useRouter()
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      router.replace('/login')
+    }
+  }, [router])
+
   return (
     <main className="min-h-screen bg-gray-100 dark:bg-gray-900 px-6 py-10 text-gray-900 dark:text-white">
       <Navbar />
