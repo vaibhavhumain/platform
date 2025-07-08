@@ -1,5 +1,4 @@
 'use client'
-
 export default function GobindCoachSitePage() {
   const openWebsite = () => {
     window.open('https://gobindcoach.com/', '_blank');

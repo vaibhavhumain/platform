@@ -1,7 +1,10 @@
 'use client';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { API_BASE_URL } from '../utils/constants';
+import { motion } from 'framer-motion';
 
 export default function Signup() {
   const router = useRouter();
@@ -34,49 +37,67 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white px-6">
-      <form
-        onSubmit={handleSignup}
-        className="bg-slate-800 p-8 rounded-lg shadow-md w-full max-w-md"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.4, ease: 'easeInOut' }}
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-800 via-teal-900 to-black px-6"
+    >
+      <div className="backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl rounded-2xl p-8 w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center text-white mb-6 tracking-wide">
+          Create Your Account 🌱
+        </h2>
 
-        <input
-          type="text"
-          placeholder="Full Name"
-          className="w-full p-2 mb-4 rounded bg-slate-700 text-white"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+        <form onSubmit={handleSignup} className="space-y-5">
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 mb-4 rounded bg-slate-700 text-white"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 mb-4 rounded bg-slate-700 text-white"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-        {errorMsg && <p className="text-red-400 mb-3">{errorMsg}</p>}
+          {errorMsg && (
+            <p className="text-sm text-red-400 bg-red-900/30 px-3 py-2 rounded">
+              {errorMsg}
+            </p>
+          )}
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 transition p-2 rounded text-white font-semibold"
-        >
-          Sign Up
-        </button>
-      </form>
-    </div>
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 transition-all py-2 rounded-lg text-white font-semibold shadow-lg"
+          >
+            Sign Up
+          </button>
+        </form>
+
+        <p className="mt-6 text-center text-sm text-gray-300">
+          Already have an account?{' '}
+          <Link href="/login" className="text-emerald-300 hover:underline font-medium">
+            Login here
+          </Link>
+        </p>
+      </div>
+    </motion.div>
   );
 }

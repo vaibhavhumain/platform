@@ -1,5 +1,4 @@
 'use client'
-
 export default function LeadsManagementPage() {
   const openLeadsApp = () => {
     window.open('https://leadsmanage.netlify.app', '_blank');

@@ -1,5 +1,4 @@
 'use client'
-
 export default function MediaGalleryPage() {
   const openGallery = () => {
     window.open('https://gc-database.netlify.app/', '_blank');
