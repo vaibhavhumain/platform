@@ -54,7 +54,7 @@ export default function HomePage() {
         transition={{ delay: 0.8, duration: 0.6 }}
       >
         <Link
-          href="/dashboard"
+          href="/login"
           className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 transition-all duration-300 text-white font-semibold text-lg shadow-xl hover:shadow-purple-700/50"
         >
           Enter Dashboard →

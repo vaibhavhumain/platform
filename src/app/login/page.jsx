@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { API_BASE_URL } from '../utils/constants';
 
 export default function Login() {
@@ -66,6 +67,14 @@ export default function Login() {
         >
           Login
         </button>
+
+        {/* Link to signup */}
+        <p className="mt-4 text-center text-sm text-gray-300">
+          Don't have an account?{' '}
+          <Link href="/signup" className="text-blue-400 hover:underline">
+            Sign up here
+          </Link>
+        </p>
       </form>
     </div>
   );
