@@ -28,7 +28,7 @@ const apps = [
   },
   {
     name: "Bus Production Tracker",
-    href: "/apps/production-tracker",
+    href: "/apps/productiontracker",
     icon: Truck,
     color: "text-green-500 bg-green-100 dark:bg-green-900/20",
   },
