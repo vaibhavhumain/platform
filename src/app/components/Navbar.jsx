@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import {
   Home,
   Users,
@@ -9,28 +9,45 @@ import {
   Truck,
   Sun,
   Moon,
-} from 'lucide-react'
+  LogOut,
+} from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState('light');
+  const [userName, setUserName] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
-    const saved = localStorage.getItem('theme')
-    if (saved === 'dark') {
-      setTheme('dark')
-      document.documentElement.classList.add('dark')
+    const savedTheme = localStorage.getItem('theme');
+    const userData = localStorage.getItem('user');
+
+    if (savedTheme === 'dark') {
+      setTheme('dark');
+      document.documentElement.classList.add('dark');
     } else {
-      setTheme('light')
-      document.documentElement.classList.remove('dark')
+      setTheme('light');
+      document.documentElement.classList.remove('dark');
     }
-  }, [])
+
+    if (userData) {
+      const user = JSON.parse(userData);
+      if (user?.name) setUserName(user.name);
+    }
+  }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
-    document.documentElement.classList.toggle('dark')
-  }
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    router.push('/login');
+  };
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-gray-900/60 shadow-md transition-all">
@@ -42,15 +59,17 @@ export default function Navbar() {
         </Link>
 
         <nav className="flex items-center gap-6 text-sm font-medium">
-          <NavLink href="/" icon={<Home size={18} />} label="Dashboard" />
-          <NavLink href="/apps/leadsmanagement" icon={<Users size={18} />} label="Leads" />
-          <NavLink href="/apps/database" icon={<GalleryVerticalEnd size={18} />} label="Gallery" />
-          <NavLink href="/apps/production-tracker" icon={<Truck size={18} />} label="Tracker" />
+          {/* Welcome Message */}
+          {userName && (
+            <span className="text-sm text-gray-800 dark:text-gray-200 font-semibold hidden sm:inline">
+              Welcome, {userName}
+            </span>
+          )}
 
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleTheme}
-            className="ml-4 flex items-center gap-2 px-3 py-1.5 rounded-full border dark:border-white border-gray-300 bg-white/30 dark:bg-gray-700/40 hover:bg-white/50 dark:hover:bg-gray-600/60 transition-all"
+            className="ml-2 flex items-center gap-2 px-3 py-1.5 rounded-full border dark:border-white border-gray-300 bg-white/30 dark:bg-gray-700/40 hover:bg-white/50 dark:hover:bg-gray-600/60 transition-all"
           >
             {theme === 'dark' ? (
               <>
@@ -64,10 +83,19 @@ export default function Navbar() {
               </>
             )}
           </button>
+
+          {/* Logout Button */}
+          <button
+            onClick={handleLogout}
+            className="ml-2 flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-600 text-white hover:bg-red-700 transition-all"
+          >
+            <LogOut size={16} />
+            <span className="hidden sm:inline">Logout</span>
+          </button>
         </nav>
       </div>
     </header>
-  )
+  );
 }
 
 function NavLink({ href, icon, label }) {
@@ -79,5 +107,5 @@ function NavLink({ href, icon, label }) {
       {icon}
       <span className="hidden sm:inline">{label}</span>
     </Link>
-  )
+  );
 }
