@@ -75,7 +75,7 @@ export default function Login() {
             Login
           </button>
           </form>
-          <div className="mt-6 flex items-center justify-center">
+          <div className="mt-6 flex items-center justify-center space-x-3">
           <button
             onClick={() => signIn('google')}
             className="p-3 rounded-full bg-white hover:bg-gray-100 shadow-lg transition-all"
@@ -86,6 +86,17 @@ export default function Login() {
             alt="Google sign-in"
             className="w-6 h-6"
           />
+          </button>
+          <button
+          onClick={() => signIn('github')}
+          className='p-3 rounded-full bg-white hover:bg-gray-100 shadow-lg transition-all'
+          title="Sign in with github"
+          >
+            <img
+            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+            alt="Github"
+            className='w-6 h-6'
+            />
           </button>
           </div>
 
