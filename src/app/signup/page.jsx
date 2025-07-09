@@ -39,7 +39,7 @@ export default function Signup() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-800 via-teal-900 to-black px-6">
       <div className="backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl rounded-2xl p-8 w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-white mb-6 tracking-wide">
-          Create Your Account 🌱
+          Create Your Account 
         </h2>
 
         <form onSubmit={handleSignup} className="space-y-5">

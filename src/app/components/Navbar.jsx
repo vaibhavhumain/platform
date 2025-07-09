@@ -59,7 +59,7 @@ export default function Navbar() {
           {/* Welcome */}
           {userName && (
             <span className="text-gray-700 dark:text-gray-200 font-medium hidden sm:inline">
-              👋 Welcome, <span className="font-semibold">{userName}</span>
+               Welcome, <span className="font-semibold">{userName}</span>
             </span>
           )}
 
