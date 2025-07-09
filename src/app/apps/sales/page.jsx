@@ -6,7 +6,7 @@ export default function SalesPortal() {
   const router = useRouter()
 
   const handleRate = () => {
-    router.push('/rate-us')
+    router.push('/rate')
   }
 
   return (

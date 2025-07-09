@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 
 export default function EnquiryDashboard() {
   const router = useRouter()
-  const handleRate = () => router.push('/rate-us')
+  const handleRate = () => router.push('/rate')
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-indigo-900 to-black px-6 py-16">

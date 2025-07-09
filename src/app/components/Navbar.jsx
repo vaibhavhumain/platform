@@ -59,16 +59,6 @@ export default function Navbar() {
             </span>
           )}
 
-          {/* App Ratings Shortcut */}
-          <Link
-            href="/apps/ratings"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-white hover:bg-purple-200 dark:hover:bg-purple-600 transition-all shadow-sm"
-            title="View App Ratings"
-          >
-            <Star size={16} />
-            <span className="hidden sm:inline">Ratings</span>
-          </Link>
-
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}

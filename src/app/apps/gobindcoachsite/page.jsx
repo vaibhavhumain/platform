@@ -10,7 +10,7 @@ export default function GobindCoachSitePage() {
   }
 
   const handleRate = () => {
-    router.push('/rate-us')
+    router.push('/rate')
   }
 
   return (

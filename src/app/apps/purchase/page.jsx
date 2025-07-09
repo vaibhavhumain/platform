@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 
 export default function PurchasePortal() {
   const router = useRouter()
-  const handleRate = () => router.push('/rate-us')
+  const handleRate = () => router.push('/rate')
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-fuchsia-900 to-black px-6 py-16">

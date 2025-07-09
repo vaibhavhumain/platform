@@ -6,7 +6,7 @@ export default function ProductionTracker() {
   const router = useRouter()
 
   const handleRate = () => {
-    router.push('/rate-us') 
+    router.push('/rate') 
   }
 
   return (

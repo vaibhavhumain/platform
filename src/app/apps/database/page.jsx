@@ -1,9 +1,13 @@
 'use client'
+import { useRouter } from 'next/navigation'
 
 export default function MediaGalleryPage() {
+  const router = useRouter();
   const openGallery = () => {
     window.open('https://gc-ims.netlify.app/', '_blank');
   };
+
+  const handleRate = () => router.push('/rate')
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-700 via-purple-800 to-black px-6 py-16">
@@ -16,13 +20,15 @@ export default function MediaGalleryPage() {
           Browse all bus images and videos, categorized by model, client, or production stage.
           A complete visual archive of GobindCoach builds.
         </p>
-        
+        <div className="flex justify-center gap-4 flex-wrap">
         <button
           onClick={openGallery}
           className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-xl transition-all shadow-md hover:scale-105"
         >
           Open Media Gallery →
         </button>
+        <button onClick={handleRate} className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-xl transition-all shadow-md hover:scale-105">Rate this App</button>
+        </div>
       </div>
     </div>
   );
