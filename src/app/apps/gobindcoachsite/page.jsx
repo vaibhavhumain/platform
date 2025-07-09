@@ -1,9 +1,17 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
 export default function GobindCoachSitePage() {
+  const router = useRouter()
+
   const openWebsite = () => {
-    window.open('https://gobindcoach.com/', '_blank');
-  };
+    window.open('https://gobindcoach.com/', '_blank')
+  }
+
+  const handleRate = () => {
+    router.push('/rate-us')
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-800 via-purple-900 to-black px-6 py-16">
@@ -17,13 +25,22 @@ export default function GobindCoachSitePage() {
           achievements, and how to get in touch.
         </p>
 
-        <button
-          onClick={openWebsite}
-          className="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-xl transition-all shadow-md hover:scale-105"
-        >
-          Visit Website →
-        </button>
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={openWebsite}
+            className="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-xl transition-all shadow-md hover:scale-105"
+          >
+            Visit Website →
+          </button>
+
+          <button
+            onClick={handleRate}
+            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-xl transition-all shadow-md hover:scale-105"
+          >
+            Rate this App
+          </button>
+        </div>
       </div>
     </div>
-  );
+  )
 }

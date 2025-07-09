@@ -2,7 +2,7 @@
 
 export default function MediaGalleryPage() {
   const openGallery = () => {
-    window.open('https://gc-database.netlify.app/', '_blank');
+    window.open('https://gc-ims.netlify.app/', '_blank');
   };
 
   return (

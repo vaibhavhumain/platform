@@ -11,6 +11,14 @@ import {
   ImageIcon,
   Truck,
   Globe,
+  Star,
+  ShoppingCart,
+  Warehouse,
+  Briefcase,
+  ClipboardList,
+  ShieldCheck,
+  Layers,
+  FileText,
 } from 'lucide-react'
 
 const apps = [
@@ -38,7 +46,50 @@ const apps = [
     icon: Globe,
     color: "text-red-500 bg-red-100 dark:bg-red-900/20",
   },
+  {
+    name: "Sales Portal",
+    href: "/apps/sales",
+    icon: ShoppingCart,
+    color: "text-orange-500 bg-orange-100 dark:bg-orange-900/20",
+  },
+  {
+    name: "Inventory Management",
+    href: "/apps/inventory",
+    icon: Warehouse,
+    color: "text-purple-500 bg-purple-100 dark:bg-purple-900/20",
+  },
+  {
+    name: "HR Management",
+    href: "/apps/HRmanagement",
+    icon: Briefcase,
+    color: "text-rose-500 bg-rose-100 dark:bg-rose-900/20",
+  },
+  {
+    name: "Enquiry Dashboard",
+    href: "/apps/enquiryDashboard",
+    icon: ClipboardList,
+    color: "text-teal-500 bg-teal-100 dark:bg-teal-900/20",
+  },
+  {
+    name: "Admin Portal",
+    href: "/apps/adminPortal",
+    icon: ShieldCheck,
+    color: "text-gray-700 bg-gray-200 dark:bg-gray-800/40",
+  },
+  {
+    name: "Bus Models Portal",
+    href: "/apps/busModelsPortal",
+    icon: Layers,
+    color: "text-indigo-500 bg-indigo-100 dark:bg-indigo-900/20",
+  },
+  {
+    name: "Purchase Tracker",
+    href: "/apps/purchase",
+    icon: FileText,
+    color: "text-lime-500 bg-lime-100 dark:bg-lime-900/20",
+  },
 ]
+
 
 export default function DashboardPage() {
   const router = useRouter()

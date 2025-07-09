@@ -1,11 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import {
-  Sun,
-  Moon,
-  LogOut,
-} from 'lucide-react'
+import { Sun, Moon, LogOut, Star } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 export default function Navbar() {
@@ -59,9 +55,19 @@ export default function Navbar() {
           {/* Welcome */}
           {userName && (
             <span className="text-gray-700 dark:text-gray-200 font-medium hidden sm:inline">
-               Welcome, <span className="font-semibold">{userName}</span>
+              Welcome, <span className="font-semibold">{userName}</span>
             </span>
           )}
+
+          {/* App Ratings Shortcut */}
+          <Link
+            href="/apps/ratings"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-white hover:bg-purple-200 dark:hover:bg-purple-600 transition-all shadow-sm"
+            title="View App Ratings"
+          >
+            <Star size={16} />
+            <span className="hidden sm:inline">Ratings</span>
+          </Link>
 
           {/* Theme Toggle */}
           <button
