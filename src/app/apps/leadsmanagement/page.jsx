@@ -10,7 +10,7 @@ export default function LeadsManagementPage() {
   }
 
   const handleRate = () => {
-    router.push('/rate-us') // Assumes you have a route like /rate-us for rating
+    router.push('/rate') 
   }
 
   return (
