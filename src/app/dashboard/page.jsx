@@ -95,6 +95,7 @@ const apps = [
 export default function DashboardPage() {
   const router = useRouter()
   const [ratings, setRatings] = useState([])
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -111,6 +112,15 @@ export default function DashboardPage() {
 
     fetchRatings()
   }, [router])
+
+  const filteredRatings = ratings.filter((r) => {
+  const query = searchQuery.toLowerCase();
+  return (
+    r.appName?.toLowerCase().includes(query) ||
+    r.submittedBy?.toLowerCase().includes(query)
+  );
+});
+
 
   return (
     <main className="min-h-screen bg-gray-100 dark:bg-gray-900 px-6 py-10 text-gray-900 dark:text-white">
@@ -166,8 +176,18 @@ export default function DashboardPage() {
           ⭐ User Ratings & Feedback
         </h2>
 
+        <div className="max-w-3xl mx-auto mb-6">
+        <input
+          type="text"
+          placeholder="Search by app name or email..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        </div>
+
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ratings.map((r) => (
+          {filteredRatings.map((r) => (
             <motion.div
               key={r._id}
               initial={{ opacity: 0, y: 20 }}
