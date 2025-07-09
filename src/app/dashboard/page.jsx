@@ -52,7 +52,11 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen bg-gray-100 dark:bg-gray-900 px-6 py-10 text-gray-900 dark:text-white">
-      <Navbar />
+      
+      {/* Navbar with spacing below */}
+      <div className="mb-10">
+        <Navbar />
+      </div>
 
       {/* Welcome Banner */}
       <motion.div
@@ -62,14 +66,14 @@ export default function DashboardPage() {
         transition={{ duration: 0.7 }}
       >
         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-          Welcome to GobindCoach Dashboard
+          Welcome to Dashboard
         </h1>
         <p className="mt-3 text-lg text-gray-600 dark:text-gray-400">
           Fast. Powerful. Intuitive.
         </p>
       </motion.div>
 
-      {/* Apps */}
+      {/* App Tiles */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {apps.map((app, index) => (
           <motion.div
