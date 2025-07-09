@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { API_BASE_URL } from '../utils/constants';
+import { signIn } from 'next-auth/react';
+
 
 export default function Login() {
   const router = useRouter();
@@ -72,7 +74,20 @@ export default function Login() {
           >
             Login
           </button>
-        </form>
+          </form>
+          <div className="mt-6 flex items-center justify-center">
+          <button
+            onClick={() => signIn('google')}
+            className="p-3 rounded-full bg-white hover:bg-gray-100 shadow-lg transition-all"
+            title="Sign in with Google"
+          >
+          <img
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+            alt="Google sign-in"
+            className="w-6 h-6"
+          />
+          </button>
+          </div>
 
         <p className="mt-6 text-center text-sm text-gray-300">
           Don&apos;t have an account?{' '}
